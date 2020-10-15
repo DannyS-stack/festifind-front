@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Text, Button, View, ActivityIndicator, Image } from "react-native";
 import { Form } from "react-bootstrap";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { gql, useMutation } from "@apollo/client";
+import { CREATE_USER } from "../graphql/query";
 
 export default function SignUpScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -9,15 +11,17 @@ export default function SignUpScreen({ navigation }) {
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+  const [createUser, { error }] = useMutation(CREATE_USER,{variables: {
+    email: "d@d.com",
+    password: "password",
+    username: "username",
+    phone: "24456",
+    name: "name",
+    image: "image",
+  }})
 
-  function submitForm(event) {
-    event.preventDefault();
-    console.log(email);
-    console.log(password);
-    console.log(username);
-    console.log(phone);
-    console.log(name);
-  }
+
   return (
     <View>
       <Text>LOGIN</Text>
@@ -51,9 +55,15 @@ export default function SignUpScreen({ navigation }) {
           setPhone(text);
         }}
       />
+      <TextInput
+        placeholder="Image"
+        onChangeText={(text) => {
+          setImage(text);
+        }}
+      />
 
       <TouchableOpacity>
-        <Button title="submit" onPress={(event) => submitForm(event)}>
+        <Button title="submit" onPress={createUser}>
           {" "}
         </Button>
       </TouchableOpacity>
