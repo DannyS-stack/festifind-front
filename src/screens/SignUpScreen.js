@@ -12,19 +12,20 @@ export default function SignUpScreen({ navigation }) {
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  const [createUser, { error }] = useMutation(CREATE_USER,{variables: {
-    email: "d@d.com",
-    password: "password",
-    username: "username",
-    phone: "24456",
-    name: "name",
-    image: "image",
-  }})
-
+  const [createUser, { error }] = useMutation(CREATE_USER, {
+    variables: {
+      email: email,
+      password: password,
+      username: username,
+      phone: phone.toString(),
+      name: name,
+      image: image,
+    },
+  });
 
   return (
     <View>
-      <Text>LOGIN</Text>
+      <Text>SIGN UP</Text>
       <TextInput
         placeholder="your name"
         onChangeText={(text) => {
