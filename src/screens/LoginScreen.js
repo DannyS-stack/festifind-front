@@ -3,12 +3,9 @@ import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
 import { LOGIN } from "../graphql/query";
-import { useDispatch } from "react-redux";
-import { loginSuccess } from "../../store/user/actions";
 import AsyncStorage from "@react-native-community/async-storage";
 
 export default function LoginScreen({ navigation }) {
-  const dispatch = useDispatch();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const { loading, error, data } = useQuery(LOGIN, {
@@ -17,19 +14,24 @@ export default function LoginScreen({ navigation }) {
       password: password,
     },
   });
-  function loginUser() {
-    LOGIN;
-    console.log(data);
+
+  async function loginUser() {
+    await LOGIN;
+    console.log("data in loginuser", data);
+
     storeData(data);
 
-    // localStorage.setItem("token", data.login.token);
     navigation.navigate("MainMenu", { screen: "Groups" });
   }
 
   const storeData = async (value) => {
     try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem("storedUser", jsonValue);
+      console.log("value login id:", value.login.id);
+      const jsonValueId = JSON.stringify(value.login.id);
+      console.log("the jsonvalue", jsonValueId);
+      await AsyncStorage.setItem("storedId", jsonValueId);
+      const jsonValueUser = JSON.stringify(value);
+      await AsyncStorage.setItem("storedUser", jsonValueUser);
     } catch (e) {
       console.log(e);
     }

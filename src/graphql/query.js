@@ -8,6 +8,24 @@ export const LOGIN = gql`
       name
       image
       username
+      id
+    }
+  }
+`;
+
+export const GET_USERS_GROUPS = gql`
+  query allGroupsofUser($id: Int!) {
+    allGroupsofUser(id: $id) {
+      owner {
+        name
+        image
+        ownerId
+      }
+      participant {
+        name
+        image
+        ownerId
+      }
     }
   }
 `;

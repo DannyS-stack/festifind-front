@@ -8,8 +8,6 @@ import LoginScreen from "./src/screens/LoginScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider, gql } from "@apollo/client";
-import store from "./store";
-import { Provider } from "react-redux";
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 
@@ -43,17 +41,15 @@ function MainMenu() {
 
 function App() {
   return (
-    <Provider store={store}>
-      <ApolloProvider client={client}>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
-            <Stack.Screen name="MainMenu" component={MainMenu} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ApolloProvider>
-    </Provider>
+    <ApolloProvider client={client}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="MainMenu" component={MainMenu} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ApolloProvider>
   );
 }
 

@@ -14,10 +14,10 @@ export default function GroupForm() {
   //       image: image,
   //     },
   //   });
-  useEffect(() => {
-    AsyncStorage.getItem("storedUser").then((res) => setData(JSON.parse(res)));
-  }, []);
-  console.log(data);
+  //   useEffect(() => {
+  //     AsyncStorage.getItem("storedUser").then((res) => setData(JSON.parse(res)));
+  //   }, []);
+  //   console.log("CLG data in groupform", data);
 
   return (
     <View>

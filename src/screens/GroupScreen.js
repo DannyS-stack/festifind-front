@@ -11,7 +11,7 @@ export default function GroupScreen() {
   useEffect(() => {
     AsyncStorage.getItem("storedUser").then((res) => setData(JSON.parse(res)));
   }, []);
-  console.log(data);
+  console.log("the data in groupscreen", data);
 
   return (
     <View>
@@ -21,7 +21,7 @@ export default function GroupScreen() {
           the groups below, or create a new group!
         </Text>
       ) : (
-        "loading..."
+        <Text>loading...</Text>
       )}
       <Groups />
       <GroupForm />

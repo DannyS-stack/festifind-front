@@ -3,8 +3,8 @@ import { Text, Image, Button, View, ActivityIndicator } from "react-native";
 
 export default function LocationsScreen() {
   return (
-    <div>
-      <p>i am the locations screen</p>
+    <View>
+      <Text>i am the locations screen</Text>
       <Image
         source={{
           uri:
@@ -12,6 +12,6 @@ export default function LocationsScreen() {
         }}
         style={{ width: 800, height: 800 }}
       />
-    </div>
+    </View>
   );
 }
