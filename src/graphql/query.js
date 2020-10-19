@@ -32,6 +32,13 @@ export const FIND_GROUP = gql`
       name
       image
       ownerId
+      participant {
+        id
+        name
+        username
+        email
+        image
+      }
     }
   }
 `;

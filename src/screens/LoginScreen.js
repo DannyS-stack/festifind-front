@@ -30,8 +30,9 @@ export default function LoginScreen({ navigation }) {
     },
   });
   function loginUser() {
+    console.log(email);
+    console.log(password);
     LOGIN;
-    console.log(data.login.name);
     dispatch(loginSuccess(data.login));
     navigation.navigate("MainMenu", { screen: "Groups" });
   }
