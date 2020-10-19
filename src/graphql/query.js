@@ -3,11 +3,35 @@ import { gql } from "@apollo/client";
 export const LOGIN = gql`
   query login($password: String!, $email: String!) {
     login(password: $password, email: $email) {
+      id
       token
       email
       name
       image
       username
+      owner {
+        id
+        name
+        image
+        ownerId
+      }
+      participant {
+        id
+        name
+        image
+        ownerId
+      }
+    }
+  }
+`;
+
+export const FIND_GROUP = gql`
+  query oneGroup($id: Int!) {
+    oneGroup(id: $id) {
+      id
+      name
+      image
+      ownerId
     }
   }
 `;

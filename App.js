@@ -6,6 +6,7 @@ import GroupScreen from "./src/screens/GroupScreen";
 import LocationsScreen from "./src/screens/LocationsScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
+import GroupMembers from "./src/screens/GroupMembers";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider, gql } from "@apollo/client";
 import store from "./store";
@@ -50,6 +51,7 @@ function App() {
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="SignUp" component={SignUpScreen} />
             <Stack.Screen name="MainMenu" component={MainMenu} />
+            <Stack.Screen name="group" component={GroupMembers} />
           </Stack.Navigator>
         </NavigationContainer>
       </ApolloProvider>
