@@ -12,7 +12,7 @@ export default function GroupMembers({ route, navigation }) {
       id: groupId.groupId,
     },
   });
-
+  console.log(data);
   // here i need to show a list off al the members of a group
   // get the id from the params
   // make a query with the the group id as an argument on backend
