@@ -1,4 +1,13 @@
-import { Text, Button, View, ActivityIndicator, Image } from "react-native";
+import {
+  Text,
+  Button,
+  View,
+  ActivityIndicator,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
@@ -6,6 +15,9 @@ import { LOGIN } from "../graphql/query";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../../store/user/actions";
 import AsyncStorage from "@react-native-community/async-storage";
+import BgImage from "../../Images/pexels-photo-625644 (1).jpeg";
+import Logo from "../../Images/glasses.svg";
+const { width: WIDTH } = Dimensions.get("window");
 
 export default function LoginScreen({ navigation }) {
   const dispatch = useDispatch();
@@ -19,47 +31,83 @@ export default function LoginScreen({ navigation }) {
   });
   function loginUser() {
     LOGIN;
-    console.log(data);
-    storeData(data);
-
-    // localStorage.setItem("token", data.login.token);
+    console.log(data.login.name);
+    dispatch(loginSuccess(data.login));
     navigation.navigate("MainMenu", { screen: "Groups" });
   }
 
-  const storeData = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem("storedUser", jsonValue);
-    } catch (e) {
-      console.log(e);
-    }
-  };
   return (
-    <View>
-      <Text>lOGIN</Text>
-      <TextInput
-        placeholder="e-mail"
-        onChangeText={(text) => {
-          setEmail(text);
-        }}
-      />
-      <TextInput
-        placeholder="password"
-        onChangeText={(text) => {
-          setPassword(text);
-        }}
-      />
+    <ImageBackground source={BgImage} style={styles.BackGroundContainer}>
+      <View style={styles.LogoContainer}>
+        <Image style={styles.Logo} source={Logo}></Image>
 
-      <Button
-        title="login"
-        onPress={() => {
-          loginUser();
-        }}
-      />
-      <Button
-        title="click here to sign up"
-        onPress={() => navigation.navigate("SignUp")}
-      />
-    </View>
+        <Text style={styles.LogoText}>Festifind</Text>
+      </View>
+      <View>
+        <TextInput
+          style={styles.input}
+          placeholder="e-mail"
+          // placeholderTextColor={"white"}
+          onChangeText={(text) => {
+            setEmail(text);
+          }}
+        />
+        <TextInput
+          style={styles.input}
+          // secureTextEntry={true}
+          placeholder="password"
+          // placeholderTextColor={"white"}
+          onChangeText={(text) => {
+            setPassword(text);
+          }}
+        />
+
+        <Button
+          title="login"
+          onPress={() => {
+            loginUser();
+          }}
+        />
+        <Button
+          title="click here to sign up"
+          onPress={() => navigation.navigate("SignUp")}
+        />
+      </View>
+    </ImageBackground>
   );
 }
+
+const styles = StyleSheet.create({
+  BackGroundContainer: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  LogoContainer: {
+    alignItems: "center",
+  },
+  Logo: {
+    width: 120,
+    height: 120,
+  },
+  LogoText: {
+    padding: 20,
+    color: "white",
+    fontSize: 20,
+  },
+
+  input: {
+    width: WIDTH - 55,
+    height: 25,
+    borderRadius: 45,
+    fontSize: 16,
+    paddingLeft: 45,
+    marginVertical: 15,
+    marginHorizontal: 25,
+    backgroundColor: "rgba(0,0,0,0.45)",
+    color: "rgba(255,255,255,0.7)",
+  },
+});

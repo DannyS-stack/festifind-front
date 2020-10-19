@@ -8,16 +8,6 @@ export default function GroupForm() {
 
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  //   const [createGroup, { error }] = useMutation(CREATE_GROUP, {
-  //     variables: {
-  //       name: groupname,
-  //       image: image,
-  //     },
-  //   });
-  useEffect(() => {
-    AsyncStorage.getItem("storedUser").then((res) => setData(JSON.parse(res)));
-  }, []);
-  console.log(data);
 
   return (
     <View>
