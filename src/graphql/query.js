@@ -25,6 +25,20 @@ export const LOGIN = gql`
   }
 `;
 
+export const GET_ALL_USERS = gql`
+  query allUsers {
+    allUsers {
+      id
+      email
+      name
+      image
+      username
+      longitude
+      latitude
+    }
+  }
+`;
+
 export const FIND_GROUP = gql`
   query oneGroup($id: Int!) {
     oneGroup(id: $id) {
@@ -65,6 +79,15 @@ export const CREATE_USER = gql`
       username
       email
       image
+    }
+  }
+`;
+export const UPDATE_USER_LOCATION = gql`
+  mutation updateLocation($id: Int, $longitude: Float, $latitude: Float) {
+    updateLocation(id: $id, longitude: $longitude, latitude: $latitude) {
+      username
+      longitude
+      latitude
     }
   }
 `;
