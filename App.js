@@ -15,23 +15,23 @@ const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: "http://192.168.0.15:4000/graphql",
   cache: new InMemoryCache(),
 });
 
-client
-  .query({
-    query: gql`
-      query {
-        allUsers {
-          id
-          username
-        }
-      }
-    `,
-  })
-  .then((result) => console.log("hello +", result))
-  .catch((result) => console.log("hello +", result));
+// client
+//   .query({
+//     query: gql`
+//       query {
+//         allUsers {
+//           id
+//           username
+//         }
+//       }
+//     `,
+//   })
+//   .then((result) => console.log("hello +", result))
+//   .catch((result) => console.log("hello +", result));
 
 function MainMenu() {
   return (
@@ -48,10 +48,11 @@ function App() {
       <ApolloProvider client={client}>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
-            <Stack.Screen name="MainMenu" component={MainMenu} />
-            <Stack.Screen name="group" component={GroupMembers} />
+            {/* <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="SignUp" component={SignUpScreen} /> */}
+            {/* <Stack.Screen name="MainMenu" component={MainMenu} />
+            <Stack.Screen name="group" component={GroupMembers} /> */}
+            <Stack.Screen name="location" component={LocationsScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </ApolloProvider>
