@@ -11,6 +11,10 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider, gql } from "@apollo/client";
 import store from "./store";
 import { Provider } from "react-redux";
+import { WebSocketLink } from "apollo-link-ws";
+import { HttpLink } from "apollo-link-http";
+import { split } from "apollo-link";
+import { getMainDefinition } from "apollo-utilities";
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 
@@ -19,19 +23,30 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// client
-//   .query({
-//     query: gql`
-//       query {
-//         allUsers {
-//           id
-//           username
-//         }
-//       }
-//     `,
-//   })
-//   .then((result) => console.log("hello +", result))
-//   .catch((result) => console.log("hello +", result));
+// const httpLink = new HttpLink({
+//   uri: "http://192.168.0.15:4000/graphql",
+// });
+
+// const wsLink = new WebSocketLink({
+//   uri: "ws://192.168.0.15:4000/graphql",
+//   options: {
+//     reconnect: true,
+//   },
+// });
+
+// const link = split(
+//   ({ query }) => {
+//     const { kind, operation } = getMainDefinition(query);
+//     return kind === "OperationDefinition" && operation === "subscription";
+//   },
+//   wsLink,
+//   httpLink
+// );
+
+// const client = new ApolloClient({
+//   link,
+//   cache: new InMemoryCache(),
+// });
 
 function MainMenu() {
   return (
@@ -48,10 +63,10 @@ function App() {
       <ApolloProvider client={client}>
         <NavigationContainer>
           <Stack.Navigator>
-            {/* <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} /> */}
-            {/* <Stack.Screen name="MainMenu" component={MainMenu} />
-            <Stack.Screen name="group" component={GroupMembers} /> */}
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="SignUp" component={SignUpScreen} />
+            <Stack.Screen name="MainMenu" component={MainMenu} />
+            <Stack.Screen name="group" component={GroupMembers} />
             <Stack.Screen name="location" component={LocationsScreen} />
           </Stack.Navigator>
         </NavigationContainer>

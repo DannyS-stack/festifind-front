@@ -40,7 +40,7 @@ export default function LoginScreen({ navigation }) {
   return (
     <ImageBackground source={BgImage} style={styles.BackGroundContainer}>
       <View style={styles.LogoContainer}>
-        <Image style={styles.Logo} source={Logo}></Image>
+        <Image style={styles.Logo} source={Logo} />
 
         <Text style={styles.LogoText}>Festifind</Text>
       </View>

@@ -9,7 +9,7 @@ export default function Groups({ navigation }) {
   console.log("user in groups component", user);
   return (
     <View>
-      <Text>The groups are displayed here</Text>{" "}
+      <Text>The groups are displayed here</Text>
       {user.participant.map((g) => {
         return (
           <View key={g.id} style={styles.container}>

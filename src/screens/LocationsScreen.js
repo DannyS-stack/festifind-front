@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, Text, Button, View, Dimensions } from "react-native";
 import * as Location from "expo-location";
-import { useQuery } from "@apollo/client";
 // import GET_ALL_USERS from "../graphql/query";
 // import UPDATE_USER_LOCATION from "../graphql/query";
 import { marker } from "../../Images/marker.png";
-import { onChange } from "react-native-reanimated";
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation, useQuery, useSubscription } from "@apollo/client";
 
 export default function LocationScreen() {
   const GET_ALL_USERS = gql`
@@ -33,12 +31,11 @@ export default function LocationScreen() {
     }
   `;
 
-  const { error, data } = useQuery(GET_ALL_USERS, {
+  const { loading, error, data } = useQuery(GET_ALL_USERS, {
     pollInterval: 500,
   });
-  console.log(data);
   const [updateLocation, { error2 }] = useMutation(UPDATE_USER_LOCATION);
-  const [loading, setLoading] = useState(true);
+
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   useEffect(() => {
@@ -52,7 +49,6 @@ export default function LocationScreen() {
       setLocation(location);
     })();
   }, []);
-  console.log(location);
   let text = "Waiting..";
   if (errorMsg) {
     text = errorMsg;
@@ -60,36 +56,20 @@ export default function LocationScreen() {
     text = JSON.stringify(location);
   }
 
-  location ? setLoading(false) : null;
-
-  !loading
-    ? setInterval(function () {
-        updateLocation({
-          variables: {
-            id: 1,
-            longitude: location.coords.longitude,
-            latitude: location.coords.latitude,
-          },
-        });
-      }, 3000)
-    : null;
+  if (location) {
+    updateLocation({
+      variables: {
+        id: 3,
+        longitude: location.coords.longitude,
+        latitude: location.coords.latitude,
+      },
+    });
+    setLocation(null);
+  }
 
   return (
     <View style={styles.container}>
-      <View style={{ marginTop: 200 }}>
-        <Button
-          title={"update location"}
-          onPress={() => {
-            updateLocation({
-              variables: {
-                id: 1,
-                longitude: location.coords.longitude,
-                latitude: location.coords.latitude,
-              },
-            });
-          }}
-        ></Button>
-      </View>
+      <View></View>
       <MapView style={styles.mapStyle}>
         {data
           ? data.allUsers.map((u) => {

@@ -1,8 +1,7 @@
 // import { selectToken } from "./selectors";
+import axios from "axios";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-// export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
-// export const LOG_OUT = "LOG_OUT";
 
 export const loginSuccess = (userInformation) => {
   console.log("its gets here");
@@ -12,42 +11,19 @@ export const loginSuccess = (userInformation) => {
   };
 };
 
-// const tokenStillValid = (userWithoutToken) => ({
-//   type: TOKEN_STILL_VALID,
-//   payload: userWithoutToken,
-// });
+// export function updateUsers(id, longitude, latitude) {
+//   return async function thunk(dispatch, getState) {
+//     console.log("DOES IT GET HERE?");
+//     console.log(id);
+//     console.log(longitude);
+//     console.log(latitude);
 
-// export const logOut = () => ({ type: LOG_OUT });
+//     const data = await axios.patch(`http://localhost:4000/graphql/update`, {
+//       id,
+//       longitude,
+//       latitude,
+//     });
 
-// export const getUserWithStoredToken = () => {
-//   return async (dispatch, getState) => {
-//     // get token from the state
-//     const token = selectToken(getState());
-
-//     // if we have no token, stop
-//     if (token === null) return;
-
-//     dispatch(appLoading());
-//     try {
-//       // if we do have a token,
-//       // check wether it is still valid or if it is expired
-//       const response = await axios.get(`${apiUrl}/me`, {
-//         headers: { Authorization: `Bearer ${token}` },
-//       });
-
-//       // token is still valid
-//       dispatch(tokenStillValid(response.data));
-//       dispatch(appDoneLoading());
-//     } catch (error) {
-//       if (error.response) {
-//         console.log(error.response.message);
-//       } else {
-//         console.log(error);
-//       }
-//       // if we get a 4xx or 5xx response,
-//       // get rid of the token by logging out
-//       dispatch(logOut());
-//       dispatch(appDoneLoading());
-//     }
+//     console.log("THE UPDATED USER", data);
 //   };
-// };
+// }
