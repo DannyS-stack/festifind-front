@@ -73,13 +73,18 @@ export default function LocationScreen() {
       <MapView style={styles.mapStyle}>
         {data
           ? data.allUsers.map((u) => {
-              return (
-                <Marker
-                  coordinate={{ longitude: u.longitude, latitude: u.latitude }}
-                  image={marker}
-                  title={u.name}
-                ></Marker>
-              );
+              if (u.longitude && u.latitude) {
+                return (
+                  <Marker
+                    coordinate={{
+                      longitude: u.longitude,
+                      latitude: u.latitude,
+                    }}
+                    image={marker}
+                    title={u.name}
+                  ></Marker>
+                );
+              }
             })
           : null}
       </MapView>
