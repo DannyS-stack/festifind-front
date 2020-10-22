@@ -9,6 +9,7 @@ import SignUpScreen from "./src/screens/SignUpScreen";
 import GroupMembers from "./src/screens/GroupMembers";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider, gql } from "@apollo/client";
+import GroupForm from "./src/components/GroupForm";
 import store from "./store";
 import { Provider } from "react-redux";
 import { WebSocketLink } from "apollo-link-ws";
@@ -23,36 +24,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// const httpLink = new HttpLink({
-//   uri: "http://192.168.0.15:4000/graphql",
-// });
-
-// const wsLink = new WebSocketLink({
-//   uri: "ws://192.168.0.15:4000/graphql",
-//   options: {
-//     reconnect: true,
-//   },
-// });
-
-// const link = split(
-//   ({ query }) => {
-//     const { kind, operation } = getMainDefinition(query);
-//     return kind === "OperationDefinition" && operation === "subscription";
-//   },
-//   wsLink,
-//   httpLink
-// );
-
-// const client = new ApolloClient({
-//   link,
-//   cache: new InMemoryCache(),
-// });
-
 function MainMenu() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="groups" component={GroupScreen} />
       <Tab.Screen name="locations" component={LocationsScreen} />
+      <Tab.Screen name="New Group" component={GroupForm} />
     </Tab.Navigator>
   );
 }
@@ -67,7 +44,6 @@ function App() {
             <Stack.Screen name="SignUp" component={SignUpScreen} />
             <Stack.Screen name="MainMenu" component={MainMenu} />
             <Stack.Screen name="group" component={GroupMembers} />
-            <Stack.Screen name="location" component={LocationsScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </ApolloProvider>

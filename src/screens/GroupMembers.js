@@ -39,14 +39,11 @@ export default function GroupMembers({ route, navigation }) {
         <Text>loading...</Text>
       ) : (
         data.oneGroup.participant.map((m) => {
-          {
-            console.log(m);
-          }
           return (
             <View>
               <Text>{m.name}</Text>
               <Text>{m.email}</Text>
-              {groupId.groupId === user.id ? (
+              {data.oneGroup.ownerId === user.id ? (
                 <View>
                   <Button
                     title="delete user"
