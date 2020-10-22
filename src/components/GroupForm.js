@@ -8,13 +8,26 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-community/async-storage";
-import { gql, useMutation } from "@apollo/client";
+import { selectUser } from "../../store/user/selectors";
+import { useSelector } from "react-redux";
+import { gql, useMutation, useQuery, useSubscription } from "@apollo/client";
 
 export default function GroupForm() {
+  const user = useSelector(selectUser);
   const [data, setData] = useState(null);
-
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
+
+  const CREATE_NEW_GROUP = gql`
+    mutation createGroup($ownerId: Int, $name: String!, $image: String) {
+      createGroup(ownerId: $ownerId, name: $name, image: $image) {
+        name
+        image
+        ownerId
+      }
+    }
+  `;
+  const [createGroup, { error }] = useMutation(CREATE_NEW_GROUP);
 
   return (
     <View style={styles.regform}>
@@ -38,7 +51,13 @@ export default function GroupForm() {
       <TouchableOpacity style={styles.button}>
         <Text
           style={styles.btntext}
-          onPress={() => Alert.alert("group created!")}
+          onPress={() => {
+            createGroup({
+              variables: { ownerId: user.id, name: name, image: image },
+            });
+
+            Alert.alert("group created!");
+          }}
         >
           Create!
         </Text>

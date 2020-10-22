@@ -14,7 +14,6 @@ import { selectUser } from "../../store/user/selectors";
 
 export default function Groups({ navigation }) {
   const user = useSelector(selectUser);
-  console.log("user in groups component", user);
   return (
     <ScrollView style={{ backgroundColor: "#4e779c" }}>
       <Text

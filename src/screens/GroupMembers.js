@@ -1,13 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { FIND_GROUP } from "../graphql/query";
-import { useQuery } from "@apollo/client";
 import { selectUser } from "../../store/user/selectors";
 import { useSelector } from "react-redux";
+import { gql, useMutation, useQuery } from "@apollo/client";
 
-import { Text, Button, View, Image, StyleSheet } from "react-native";
+import { Text, Button, View, Alert, StyleSheet, TextInput } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function GroupMembers({ route, navigation }) {
+  const CREATE_PARTICIPANT = gql`
+    mutation createParticipant($email: String, $groupId: Int) {
+      createParticipant(email: $email, groupId: $groupId) {
+        id
+        userId
+        groupId
+      }
+    }
+  `;
+  const DELETE_PARTICIPANT = gql`
+    mutation deleteParticipant($userId: Int, $groupId: Int) {
+      deleteParticipant(userId: $userId, groupId: $groupId) {
+        id
+        userId
+        groupId
+      }
+    }
+  `;
+
+  const [email, setEmail] = useState(null);
   const user = useSelector(selectUser);
+  const [createParticipant, { error1 }] = useMutation(CREATE_PARTICIPANT);
+  const [deleteParticipant, { error2 }] = useMutation(DELETE_PARTICIPANT);
 
   const groupId = route.params;
   console.log("the groupid in groupmembers", groupId.groupId);
@@ -16,44 +39,60 @@ export default function GroupMembers({ route, navigation }) {
       id: groupId.groupId,
     },
   });
-  // here i need to show a list off al the members of a group
-  // get the id from the params V
-  // make a query with the the group id as an argument on backend V
-  // find the right group on database V
-  // make the query on the frontend V
-  // get the groups data in local state V
-  // display add user en delete user buttons if group.ownerId === user.id
-  // make parameterized selector and pass the route params.groupid
-  // in the selector map over and use .find to find group
-  // out of that group select the ownerId
-  // check if ownerId === user.id
-  // make input field(for username) and make it a controlled input.
-  // onpress add user button send mutation to backend to first find that user and then add him to the group
-  //???
-  //profit
 
   return (
-    <View>
-      <Text>the indivdual selected group is displayed here</Text>
+    <View style={styles.container}>
+      <Text style={styles.header}>
+        {data ? data.oneGroup.name : "group name here"}
+      </Text>
+      <View>
+        <TextInput
+          // secureTextEntry={true}
+          placeholder="email"
+          // placeholderTextColor={"white"}
+          onChangeText={(text) => {
+            setEmail(text);
+          }}
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            createParticipant({
+              variables: {
+                email: email,
+                groupId: groupId.groupId,
+              },
+            }),
+              Alert.alert("user added!");
+          }}
+        >
+          <Text style={styles.btntext}>add user</Text>
+        </TouchableOpacity>
+      </View>
       {loading ? (
         <Text>loading...</Text>
       ) : (
         data.oneGroup.participant.map((m) => {
           return (
-            <View>
-              <Text>{m.name}</Text>
-              <Text>{m.email}</Text>
+            <View style={{ flexDirection: "row" }}>
+              <Text style={{ fontSize: 18 }}>{m.name}</Text>
+              <Text style={{ fontSize: 18 }}>{m.email}</Text>
               {data.oneGroup.ownerId === user.id ? (
-                <View>
-                  <Button
-                    title="delete user"
-                    onPress={console.log("button works")}
-                  ></Button>
-                  <Button
-                    title="add user"
-                    onPress={() => console.log("button works")}
-                  ></Button>
-                </View>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => {
+                    deleteParticipant({
+                      variables: {
+                        userId: user.id,
+                        groupId: groupId.groupId,
+                      },
+                    });
+
+                    Alert.alert("user deleted!");
+                  }}
+                >
+                  <Text style={styles.btntext}>delete user</Text>
+                </TouchableOpacity>
               ) : null}
             </View>
           );
@@ -62,3 +101,41 @@ export default function GroupMembers({ route, navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#4e779c",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  header: {
+    fontSize: 24,
+    color: "#fff",
+    paddingBottom: 10,
+
+    marginBottom: 40,
+    borderBottomColor: "#eb8407",
+    borderBottomWidth: 2,
+  },
+  Textinput: {
+    alignSelf: "stretch",
+    height: 40,
+    marginBottom: 30,
+    color: "#fff",
+    borderBottomColor: "#f8f8f8",
+    borderBottomWidth: 1,
+  },
+  button: {
+    alignSelf: "stretch",
+    alignItems: "center",
+    padding: 20,
+    backgroundColor: "#eb8407",
+    marginTop: 50,
+  },
+
+  btntext: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+});
