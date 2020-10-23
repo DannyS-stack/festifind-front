@@ -19,7 +19,7 @@ Festifind solves the age old problem of losing your friends on festivals. There 
 ![festifind-example](https://github.com/DannyS-stack/festifind-front/blob/development/Images/ezgif.com-gif-maker.gif)
 
 
-for this project I decided to experiment with a lot of technologies that where new to me, I've tagged those with > new
+for this project I decided to experiment with a lot of technologies that were new to me, I've tagged those with > new
 
 # Used technologies
 - Javascript
@@ -31,7 +31,7 @@ for this project I decided to experiment with a lot of technologies that where n
 - Apollo Server-Express > new
 
 # Goals for this project
-As mentioned, I decided the experiment with a lot of new technologies. I thought both react-Native and Graphql where super interesting and this was a good opportunity to try. It defintiely made the project more challenging as this was also the first full-stack app I have ever build from scratch. The goals for when I was done where:
+As mentioned, I decided the experiment with a lot of new technologies. I thought both react-Native and Graphql where super interesting and this was a good opportunity to try. It definitely made the project more challenging as this was also the first full-stack app I have ever build from scratch. The goals for when I was done where:
 
 - know how to use graphql
 - know how to make a mobile app with React native
@@ -46,12 +46,15 @@ As mentioned, I decided the experiment with a lot of new technologies. I thought
 - As a user I want to be able to see the groups that I am in
 - As a user I want to be able to login 
 - As a user I want to be able to see who is in my group
-- As a user I want to be able to see who is in my group
 - As a user I want to be able to Sign up 
 - As a user I want to be able to be the owner of a group
 - As a user I want to be able to create a new group
-- As a user I want to be able to ad people to my group
+- As a user I want to be able to add people to my group
 - As a group owner I want to be able to  remove people from my group
+- As a user I want to be able to login and see my own location on the map
+- as a user I want to share my location in real time
+
+
 
 
  
