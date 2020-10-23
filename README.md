@@ -1,5 +1,3 @@
-# festifind-front
-
 
 # Festifind, never lose your friends again!
 
