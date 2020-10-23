@@ -33,7 +33,6 @@ export default function GroupMembers({ route, navigation }) {
   const [deleteParticipant, { error2 }] = useMutation(DELETE_PARTICIPANT);
 
   const groupId = route.params;
-  console.log("the groupid in groupmembers", groupId.groupId);
   const { loading, error, data } = useQuery(FIND_GROUP, {
     variables: {
       id: groupId.groupId,
@@ -43,19 +42,18 @@ export default function GroupMembers({ route, navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>
-        {data ? data.oneGroup.name : "group name here"}
+        {data ? data.oneGroup.name : "groupname"}
       </Text>
       <View>
         <TextInput
-          // secureTextEntry={true}
+          style={styles.Textinput}
           placeholder="email"
-          // placeholderTextColor={"white"}
           onChangeText={(text) => {
             setEmail(text);
           }}
         />
         <TouchableOpacity
-          style={styles.button}
+          style={styles.button1}
           onPress={() => {
             createParticipant({
               variables: {
@@ -75,11 +73,11 @@ export default function GroupMembers({ route, navigation }) {
         data.oneGroup.participant.map((m) => {
           return (
             <View style={{ flexDirection: "row" }}>
-              <Text style={{ fontSize: 18 }}>{m.name}</Text>
-              <Text style={{ fontSize: 18 }}>{m.email}</Text>
+              <Text style={styles.textStyle}>{m.name}</Text>
+              <Text style={styles.textStyle}>{m.email}</Text>
               {data.oneGroup.ownerId === user.id ? (
                 <TouchableOpacity
-                  style={styles.button}
+                  style={styles.button1}
                   onPress={() => {
                     deleteParticipant({
                       variables: {
@@ -104,17 +102,19 @@ export default function GroupMembers({ route, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexDirection: "column",
     backgroundColor: "#4e779c",
-    alignItems: "center",
-    justifyContent: "center",
+    margin: 25,
+    padding: 10,
+    flex: 1,
+    borderRadius: 8,
   },
   header: {
     fontSize: 24,
     color: "#fff",
     paddingBottom: 10,
+    marginBottom: 70,
 
-    marginBottom: 40,
     borderBottomColor: "#eb8407",
     borderBottomWidth: 2,
   },
@@ -126,16 +126,30 @@ const styles = StyleSheet.create({
     borderBottomColor: "#f8f8f8",
     borderBottomWidth: 1,
   },
-  button: {
-    alignSelf: "stretch",
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: "#eb8407",
-    marginTop: 50,
+  textStyle: {
+    fontSize: 18,
+    flex: 1,
   },
-
-  btntext: {
-    color: "#fff",
-    fontWeight: "bold",
+  button1: {
+    backgroundColor: "#eb8407",
+    width: 70,
+    height: 30,
+    padding: 5,
+    margin: 5,
+    textAlign: "center",
+    marginBottom: 100,
+  },
+  button2: {
+    backgroundColor: "#eb8407",
+    width: 70,
+    height: 30,
+    padding: 5,
+    margin: 5,
+    textAlign: "center",
+  },
+  buttonText: {
+    fontSize: 15,
+    color: "#FFFFFF",
+    textAlign: "center",
   },
 });

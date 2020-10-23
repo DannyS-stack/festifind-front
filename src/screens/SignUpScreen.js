@@ -85,7 +85,7 @@ export default function SignUpScreen({ navigation }) {
               (username && password && phone && name && email !== null) ||
               (username && password && phone && name && email !== "")
             ) {
-              createUser;
+              createUser();
               Alert.alert("Sign Up Successfull!");
               navigation.navigate("Login");
             } else {
