@@ -35,3 +35,33 @@ As mentioned, I dedcided the experiment with a lot of new technologies. I though
 
 - know how to use graphql
 - know how to make a mobile app with React native
+
+
+# user stories
+- as a user I want to be able to see the groups that I am in
+- As a user I want to be able to login 
+- as a user I want to be able to see who is in my group
+- as a user I want to be able to see who is in my group
+- As a user I want to be able to Sign up 
+- As a user I want to be able to be the owner of a group
+- as a user I want to be able to create a new group
+- As a user I want to be able to ad people to my group
+- as a group owner I want to be able to  remove people from my group
+
+ 
+# Project board
+
+link to [project board](https://github.com/users/DannyS-stack/projects/1)
+
+
+# WireFrame
+link to [wireframe](https://wireframepro.mockflow.com/editor.jsp?editor=off&perm=Owner&projectid=M42573935fe48c12eb0f83445370f93f11602491326051&publicid=6eb9fa79163a47c59d90e0f2e5f9bd44#/page/D7b7e575d9c0fd41f1ddaf768cdf82b89)
+
+
+
+# Datamodel
+link to [data model](https://dbdiagram.io/d/5f8445eb3a78976d7b774ab5)
+
+
+
+
