@@ -16,7 +16,8 @@ Festifind solves the age old problem of losing your friends on festivals. There 
 - Reflection
 
 # App demo
-insert gif here
+![alt-text](https://github.com/DannyS-stack/festifind-front/blob/development/Images/festifindGif.gif)
+
 
 for this project I decided to experiment with a lot of technologies that where new to me, I've tagged those with > new
 
