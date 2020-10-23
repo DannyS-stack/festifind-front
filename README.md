@@ -39,15 +39,16 @@ As mentioned, I dedcided the experiment with a lot of new technologies. I though
 
 
 # user stories
-- as a user I want to be able to see the groups that I am in
+- As a user I want to be able to see the groups that I am in
 - As a user I want to be able to login 
-- as a user I want to be able to see who is in my group
-- as a user I want to be able to see who is in my group
+- As a user I want to be able to see who is in my group
+- As a user I want to be able to see who is in my group
 - As a user I want to be able to Sign up 
 - As a user I want to be able to be the owner of a group
-- as a user I want to be able to create a new group
+- As a user I want to be able to create a new group
 - As a user I want to be able to ad people to my group
-- as a group owner I want to be able to  remove people from my group
+- As a group owner I want to be able to  remove people from my group
+
 
  
 # Project board
@@ -62,6 +63,26 @@ link to [wireframe](https://wireframepro.mockflow.com/editor.jsp?editor=off&perm
 
 # Datamodel
 link to [data model](https://dbdiagram.io/d/5f8445eb3a78976d7b774ab5)
+
+
+# Git version control
+
+
+
+# backend repo
+link to [backend repo](https://github.com/DannyS-stack/festifind-back)
+
+
+#  Reflection
+
+So this was the first time I really built a full stack app from scratch. I built this app with only 3 months of coding experience so it was very challenging, but I managed to do it in the end. The app is still very much a work in progress, the app in its current state is only 10 days of work and is missing some features that I still want to work on. I think I made it even more challenging for myself by using react native and graphql for the first time, but I did learn a lot more than if I would have played it safe and just only did things I already knew. I really liked working with graphql once I started to understand it and react native is also really cool when you get used to it. Would definitely use them again in future projects.
+ 
+
+
+
+
+
+
 
 
 
