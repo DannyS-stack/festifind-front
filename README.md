@@ -39,6 +39,7 @@ As mentioned, I decided the experiment with a lot of new technologies. I thought
 - practice setting up a database and using sequelize
 - Learn how to use Apollo-Client and Apollo-Server
 - build a full-stack app from scratch
+- using .env files to hide sensitive information
 - being able to use git version control
 
 
@@ -70,8 +71,10 @@ link to [data model](https://dbdiagram.io/d/5f8445eb3a78976d7b774ab5)
 
 
 # Git version control
-
-
+- working on seperate branches to implement features
+- creating pull requests
+- merging the feature branch to the development branch
+- pulling the updated development branch
 
 # backend repo
 link to [backend repo](https://github.com/DannyS-stack/festifind-back)
