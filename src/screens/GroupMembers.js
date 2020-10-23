@@ -72,7 +72,7 @@ export default function GroupMembers({ route, navigation }) {
       ) : (
         data.oneGroup.participant.map((m) => {
           return (
-            <View style={{ flexDirection: "row" }}>
+            <View style={{ flexDirection: "row" }} key={m.id}>
               <Text style={styles.textStyle}>{m.name}</Text>
               <Text style={styles.textStyle}>{m.email}</Text>
               {data.oneGroup.ownerId === user.id ? (
