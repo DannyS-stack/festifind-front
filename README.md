@@ -36,6 +36,10 @@ As mentioned, I decided the experiment with a lot of new technologies. I thought
 
 - know how to use graphql
 - know how to make a mobile app with React native
+- practice setting up a database and using sequelize
+- Learn how to use Apollo-Client and Apollo-Server
+- build a full-stack app from scratch
+- being able to use git version control
 
 
 # user stories
