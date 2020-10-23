@@ -32,7 +32,7 @@ for this project I decided to experiment with a lot of technologies that where n
 
 # Goals for this project
 
-As mentioned, I dedcided the experiment with a lot of new technologies. I thought both react-Native and Graphql where super interesting and this was a good opportunity to try. It defintiely made the project more challenging as this was also the first full-stack app I have ever build from scratch. The goals for when I was done where:
+As mentioned, I decided the experiment with a lot of new technologies. I thought both react-Native and Graphql where super interesting and this was a good opportunity to try. It defintiely made the project more challenging as this was also the first full-stack app I have ever build from scratch. The goals for when I was done where:
 
 - know how to use graphql
 - know how to make a mobile app with React native
