@@ -53,16 +53,14 @@ export default function LoginScreen({ navigation }) {
         <TextInput
           style={styles.Textinput}
           placeholder="e-mail"
-          // placeholderTextColor={"white"}
           onChangeText={(text) => {
             setEmail(text);
           }}
         />
         <TextInput
           style={styles.Textinput}
-          // secureTextEntry={true}
+          secureTextEntry={true}
           placeholder="password"
-          // placeholderTextColor={"white"}
           onChangeText={(text) => {
             setPassword(text);
           }}

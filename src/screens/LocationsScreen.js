@@ -74,7 +74,15 @@ export default function LocationScreen() {
   return (
     <View style={styles.container}>
       <View></View>
-      <MapView style={styles.mapStyle}>
+      <MapView
+        style={styles.mapStyle}
+        initialRegion={{
+          latitude: 52.370216,
+          longitude: 4.895168,
+          latitudeDelta: 0.1922,
+          longitudeDelta: 0.0421,
+        }}
+      >
         {data
           ? data.allUsers.map((u) => {
               if (u.longitude && u.latitude) {

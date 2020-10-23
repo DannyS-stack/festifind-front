@@ -1,4 +1,3 @@
-// import { LOG_OUT, LOGIN_SUCCESS, TOKEN_STILL_VALID } from "./actions";
 import { LOGIN_SUCCESS } from "./actions";
 
 const initialState = {
