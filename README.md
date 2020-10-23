@@ -4,16 +4,16 @@
 Festifind solves the age old problem of losing your friends on festivals. There are no festivals right now you say? Well it works just as well to track just about anybody who is using the app. With this app, you will never lose the people you care about. This app features a map with markers on the locations where other users are and they are displayed with a name, so you always know who exactly is where!
 
 ## Table of contents
-- App demo
-- Used technologies
-- Goals for this project
-- User Stories
-- Project board
-- WireFrame
-- Datamodel
-- Git version control
-- Backend server repo
-- Reflection
+- [App demo](#app-demo)
+- [Used technologies](#used-technologies)
+- [Goals for this project](#goals-for-this-project)
+- [User stories](#user-stories)
+- [Project board](#project-board)
+- [WireFrame](#wireframe)
+- [Datamodel](#datamodel)
+- [Git version control](#git-version-control)
+- [Backend server repo](#backend-server-repo)
+- [Reflection](#reflection)
 
 # App demo
 ![festifind-example](https://github.com/DannyS-stack/festifind-front/blob/development/Images/ezgif.com-gif-maker.gif)
@@ -31,7 +31,6 @@ for this project I decided to experiment with a lot of technologies that where n
 - Apollo Server-Express > new
 
 # Goals for this project
-
 As mentioned, I decided the experiment with a lot of new technologies. I thought both react-Native and Graphql where super interesting and this was a good opportunity to try. It defintiely made the project more challenging as this was also the first full-stack app I have ever build from scratch. The goals for when I was done where:
 
 - know how to use graphql
@@ -57,7 +56,6 @@ As mentioned, I decided the experiment with a lot of new technologies. I thought
 
  
 # Project board
-
 link to [project board](https://github.com/users/DannyS-stack/projects/1)
 
 
@@ -81,7 +79,6 @@ link to [backend repo](https://github.com/DannyS-stack/festifind-back)
 
 
 #  Reflection
-
 So this was the first time I really built a full stack app from scratch. I built this app with only 3 months of coding experience so it was very challenging, but I managed to do it in the end. The app is still very much a work in progress, the app in its current state is only 10 days of work and is missing some features that I still want to work on. I think I made it even more challenging for myself by using react native and graphql for the first time, but I did learn a lot more than if I would have played it safe and just only did things I already knew. I really liked working with graphql once I started to understand it and react native is also really cool when you get used to it. Would definitely use them again in future projects.
  
 
