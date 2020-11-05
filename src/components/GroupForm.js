@@ -6,15 +6,13 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
-import React, { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-community/async-storage";
+import React, { useState } from "react";
 import { selectUser } from "../../store/user/selectors";
 import { useSelector } from "react-redux";
-import { gql, useMutation, useQuery, useSubscription } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 
 export default function GroupForm() {
   const user = useSelector(selectUser);
-  const [data, setData] = useState(null);
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
 

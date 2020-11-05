@@ -2,38 +2,19 @@ import React, { useState } from "react";
 import { FIND_GROUP } from "../graphql/query";
 import { selectUser } from "../../store/user/selectors";
 import { useSelector } from "react-redux";
-import { gql, useMutation, useQuery } from "@apollo/client";
-
-import { Text, Button, View, Alert, StyleSheet, TextInput } from "react-native";
+import { useMutation, useQuery } from "@apollo/client";
+import { CREATE_PARTICIPANT, DELETE_PARTICIPANT } from "../graphql/query";
+import { Text, View, Alert, StyleSheet, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function GroupMembers({ route, navigation }) {
-  const CREATE_PARTICIPANT = gql`
-    mutation createParticipant($email: String, $groupId: Int) {
-      createParticipant(email: $email, groupId: $groupId) {
-        id
-        userId
-        groupId
-      }
-    }
-  `;
-  const DELETE_PARTICIPANT = gql`
-    mutation deleteParticipant($userId: Int, $groupId: Int) {
-      deleteParticipant(userId: $userId, groupId: $groupId) {
-        id
-        userId
-        groupId
-      }
-    }
-  `;
-
   const [email, setEmail] = useState(null);
   const user = useSelector(selectUser);
-  const [createParticipant, { error1 }] = useMutation(CREATE_PARTICIPANT);
+  const [createParticipant, { error }] = useMutation(CREATE_PARTICIPANT);
   const [deleteParticipant, { error2 }] = useMutation(DELETE_PARTICIPANT);
 
   const groupId = route.params;
-  const { loading, error, data } = useQuery(FIND_GROUP, {
+  const { loading, error1, data } = useQuery(FIND_GROUP, {
     variables: {
       id: groupId.groupId,
     },
@@ -58,10 +39,10 @@ export default function GroupMembers({ route, navigation }) {
             createParticipant({
               variables: {
                 email: email,
-                groupId: groupId.groupId,
+                groupId: parseInt(groupId.groupId),
               },
             }),
-              Alert.alert("user added!");
+              error ? Alert.alert(`${error}`) : Alert.alert(`"user added!"`);
           }}
         >
           <Text style={styles.btntext}>add user</Text>

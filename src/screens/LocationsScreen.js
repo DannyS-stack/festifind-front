@@ -1,44 +1,20 @@
 import React, { useState, useEffect } from "react";
 import MapView, { Marker } from "react-native-maps";
-import { StyleSheet, Text, Button, View, Dimensions } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 import * as Location from "expo-location";
 import { selectUser } from "../../store/user/selectors";
 import { useSelector } from "react-redux";
-// import GET_ALL_USERS from "../graphql/query";
-// import UPDATE_USER_LOCATION from "../graphql/query";
+import { GET_ALL_USERS, UPDATE_USER_LOCATION } from "../graphql/query";
 import { marker } from "../../Images/marker.png";
-import { gql, useMutation, useQuery, useSubscription } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 
 export default function LocationScreen() {
   const user = useSelector(selectUser);
 
-  const GET_ALL_USERS = gql`
-    query allUsers {
-      allUsers {
-        id
-        email
-        name
-        image
-        username
-        longitude
-        latitude
-      }
-    }
-  `;
-  const UPDATE_USER_LOCATION = gql`
-    mutation updateLocation($id: Int, $longitude: Float, $latitude: Float) {
-      updateLocation(id: $id, longitude: $longitude, latitude: $latitude) {
-        username
-        longitude
-        latitude
-      }
-    }
-  `;
-
   const { loading, error, data } = useQuery(GET_ALL_USERS, {
     pollInterval: 500,
   });
-  const [updateLocation, { error2 }] = useMutation(UPDATE_USER_LOCATION);
+  const [updateLocation] = useMutation(UPDATE_USER_LOCATION);
 
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);

@@ -1,13 +1,5 @@
-import { buildExecutionContext } from "graphql/execution/execute";
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Button,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../store/user/selectors";
