@@ -1,10 +1,6 @@
 import {
   Text,
-  Button,
   View,
-  ActivityIndicator,
-  Image,
-  ImageBackground,
   StyleSheet,
   Dimensions,
   ScrollView,
@@ -12,14 +8,10 @@ import {
 } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { useQuery } from "@apollo/client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { LOGIN } from "../graphql/query";
 import { useDispatch } from "react-redux";
-
 import { loginSuccess } from "../../store/user/actions";
-import AsyncStorage from "@react-native-community/async-storage";
-import BgImage from "../../Images/pexels-photo-625644 (1).jpeg";
-import Logo from "../../Images/glasses.svg";
 const { width: WIDTH } = Dimensions.get("window");
 
 export default function LoginScreen({ navigation }) {
@@ -48,7 +40,6 @@ export default function LoginScreen({ navigation }) {
   return (
     <ScrollView>
       <View style={styles.regform}>
-        {/* <Image style={styles.Logo} source={Logo} /> */}
         <Text style={styles.header}>Festifind</Text>
         <TextInput
           style={styles.Textinput}
@@ -120,38 +111,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-
-// const styles = StyleSheet.create({
-//   BackGroundContainer: {
-//     flex: 1,
-//     width: "100%",
-//     height: "100%",
-//     justifyContent: "center",
-//     alignItems: "center",
-//   },
-
-//   LogoContainer: {
-//     alignItems: "center",
-//   },
-//   Logo: {
-//     width: 120,
-//     height: 120,
-//   },
-//   LogoText: {
-//     padding: 20,
-//     color: "white",
-//     fontSize: 20,
-//   },
-
-//   input: {
-//     width: WIDTH - 55,
-//     height: 25,
-//     borderRadius: 45,
-//     fontSize: 16,
-//     paddingLeft: 45,
-//     marginVertical: 15,
-//     marginHorizontal: 25,
-//     backgroundColor: "rgba(0,0,0,0.45)",
-//     color: "rgba(255,255,255,0.7)",
-//   },
-// });

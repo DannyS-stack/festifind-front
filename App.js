@@ -8,14 +8,10 @@ import LoginScreen from "./src/screens/LoginScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
 import GroupMembers from "./src/screens/GroupMembers";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { ApolloProvider, gql } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import GroupForm from "./src/components/GroupForm";
 import store from "./store";
 import { Provider } from "react-redux";
-import { WebSocketLink } from "apollo-link-ws";
-import { HttpLink } from "apollo-link-http";
-import { split } from "apollo-link";
-import { getMainDefinition } from "apollo-utilities";
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 

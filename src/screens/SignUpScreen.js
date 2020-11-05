@@ -1,17 +1,7 @@
-import React, { useState, useEffect } from "react";
-import {
-  Text,
-  Button,
-  View,
-  ActivityIndicator,
-  StyleSheet,
-  Image,
-  ScrollView,
-  Alert,
-} from "react-native";
-import { Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Text, View, StyleSheet, ScrollView, Alert } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../graphql/query";
 
 export default function SignUpScreen({ navigation }) {
